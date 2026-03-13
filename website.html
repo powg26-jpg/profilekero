@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KERO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBD4',
+                        orange: '#D47E30',
+                        brown: '#8D5A2B',
+                        darkBrown: '#825E34',
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FDFBD4;
+            color: #825E34;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDFBD4; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D47E30; 
+            border-radius: 5px;
+        }
+
+        /* Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-bar-fill {
+            width: 0%;
+            transition: width 1.5s ease-out;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #D47E30;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-cream/90 backdrop-blur-md border-b border-orange/20 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="font-serif text-3xl font-bold text-darkBrown tracking-tighter">CHARLES DAVID C. DESABILLE</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="nav-link text-darkBrown hover:text-orange px-3 py-2 rounded-md text-sm font-medium transition-colors">About Me</a>
+                        <a href="#skills" class="nav-link text-darkBrown hover:text-orange px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
+                        <a href="#projects" class="nav-link text-darkBrown hover:text-orange px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                        <a href="#contact" class="bg-orange text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-darkBrown transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200">Contact</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-darkBrown hover:text-orange focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-cream border-t border-orange/20" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="text-darkBrown hover:text-orange block px-3 py-2 rounded-md text-base font-medium">About Me</a>
+                <a href="#skills" class="text-darkBrown hover:text-orange block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#projects" class="text-darkBrown hover:text-orange block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#contact" class="text-orange font-bold block px-3 py-2 rounded-md text-base">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / About Section -->
+    <section id="about" class="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                
+                <!-- Bio Content (Left) -->
+                <div class="w-full lg:w-1/2 fade-in-up">
+                    <div class="inline-block px-4 py-1 mb-4 text-xs font-semibold tracking-wider text-orange uppercase bg-orange/10 rounded-full">
+                        BSIT Student & Freelancer
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-serif font-bold text-darkBrown mb-6 leading-tight">
+                        About <span class="text-orange">Me</span>
+                    </h1>
+                    <div class="prose prose-lg text-brown/90 mb-8 space-y-4">
+                        <p>
+                            I am a <strong>Bachelor of Science in Information Technology (BSIT)</strong> student at Christ the King College. I have skills in programming and editing, and I also work as a freelance creator. Through my studies and freelance work, I continue to improve my technical and creative abilities.
+                        </p>
+                        <p>
+                            I am a very consistent and detail-oriented person who always aims for high-quality results. My perfectionist mindset helps me focus on accuracy, organization, and delivering work that meets high standards. I am passionate about learning new technologies and continuously developing my skills in the field of information technology.
+                        </p>
+                    </div>
+
+                    <!-- Background Info -->
+                    <div class="bg-white/50 border-l-4 border-orange p-6 rounded-r-lg shadow-sm mb-8">
+                        <h3 class="text-xl font-bold text-darkBrown mb-4 flex items-center">
+                            <i class="fas fa-graduation-cap mr-2 text-orange"></i> Background
+                        </h3>
+                        <ul class="space-y-3 text-sm text-brown">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 mt-1.5 mr-2 bg-orange rounded-full flex-shrink-0"></span>
+                                <span>Graduated from <a href="https://www.facebook.com/p/Manuel-Lugod-Central-School-100054358669005/" target="_blank" class="underline hover:text-orange decoration-orange/30">Manuel Lugod Central School (MLCS)</a> for elementary.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 mt-1.5 mr-2 bg-orange rounded-full flex-shrink-0"></span>
+                                <span>Completed senior high school at <a href="https://www.facebook.com/GCCNHSofficial/" target="_blank" class="underline hover:text-orange decoration-orange/30">GCCNHS</a> (TVL-ICT Programming).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 mt-1.5 mr-2 bg-orange rounded-full flex-shrink-0"></span>
+                                <span>Currently studying BSIT at <a href="https://www.facebook.com/ckcgingoogcity/" target="_blank" class="underline hover:text-orange decoration-orange/30">Christ the King College (CKC)</a>.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Profile Image (Right) -->
+                <div class="w-full lg:w-1/2 flex justify-center lg:justify-end fade-in-up" style="transition-delay: 200ms;">
+                    <div class="relative w-80 h-80 lg:w-[450px] lg:h-[450px]">
+                        <!-- Decorative elements behind image -->
+                        <div class="absolute top-4 -right-4 w-full h-full border-2 border-orange rounded-2xl z-0"></div>
+                        <div class="absolute -bottom-4 -left-4 w-full h-full bg-orange/20 rounded-2xl z-0"></div>
+                        
+                        <!-- Actual Image Container -->
+                        <div class="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white z-10 bg-gray-200">
+                            <!-- Placeholder for profile.jpeg -->
+                            <img src="profile.jpg" alt="Profile Picture" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                            
+                            <!-- Fallback if image fails -->
+                            <div class="absolute inset-0 flex items-center justify-center text-gray-400 -z-10">
+                                <i class="fas fa-user text-6xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-serif font-bold text-darkBrown mb-4">My <span class="text-orange">Skills</span></h2>
+                <div class="w-20 h-1 bg-orange mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Programming Column -->
+                <div class="bg-cream p-8 rounded-2xl shadow-lg border border-orange/10 fade-in-up">
+                    <div class="flex items-center mb-8">
+                        <div class="w-12 h-12 bg-darkBrown rounded-lg flex items-center justify-center text-cream text-xl mr-4">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-darkBrown">Programming</h3>
+                            <p class="text-sm text-brown/70">Currently learning & building websites</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Java -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium text-darkBrown">Java</span>
+                                <span class="text-sm font-medium text-orange">3/10</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar-fill bg-darkBrown h-2.5 rounded-full" data-width="30%"></div>
+                            </div>
+                        </div>
+                        <!-- PHP -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium text-darkBrown">PHP</span>
+                                <span class="text-sm font-medium text-orange">2/10</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar-fill bg-darkBrown h-2.5 rounded-full" data-width="20%"></div>
+                            </div>
+                        </div>
+                        <!-- Python -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium text-darkBrown">Python</span>
+                                <span class="text-sm font-medium text-orange">4/10</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar-fill bg-darkBrown h-2.5 rounded-full" data-width="40%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Editing Column -->
+                <div class="bg-cream p-8 rounded-2xl shadow-lg border border-orange/10 fade-in-up" style="transition-delay: 100ms;">
+                    <div class="flex items-center mb-8">
+                        <div class="w-12 h-12 bg-orange rounded-lg flex items-center justify-center text-white text-xl mr-4">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-darkBrown">Editing</h3>
+                            <p class="text-sm text-brown/70">Personal projects & creative work</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- DaVinci -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium text-darkBrown">DaVinci Resolve</span>
+                                <span class="text-sm font-medium text-orange">4/10</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar-fill bg-orange h-2.5 rounded-full" data-width="40%"></div>
+                            </div>
+                        </div>
+                        <!-- CapCut -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium text-darkBrown">CapCut</span>
+                                <span class="text-sm font-medium text-orange">7/10</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar-fill bg-orange h-2.5 rounded-full" data-width="70%"></div>
+                            </div>
+                        </div>
+                        <!-- PicsArt -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-base font-medium text-darkBrown">PicsArt</span>
+                                <span class="text-sm font-medium text-orange">8/10</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="skill-bar-fill bg-orange h-2.5 rounded-full" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-serif font-bold text-darkBrown mb-4">Featured <span class="text-orange">Projects</span></h2>
+                <p class="text-brown max-w-2xl mx-auto">Check out some of my recent creative work on Instagram.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <a href="https://www.instagram.com/reel/DVQsCJGj8wa/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" class="group relative block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in-up">
+                    <div class="absolute inset-0 bg-darkBrown/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+                        <span class="text-white font-bold text-lg border-2 border-white px-6 py-2 rounded-full">View Reel</span>
+                    </div>
+                    <div class="h-64 bg-gray-200 flex items-center justify-center overflow-hidden">
+                        <!-- Placeholder for thumbnail -->
+                        <i class="fab fa-instagram text-6xl text-orange/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-darkBrown mb-2 group-hover:text-orange transition-colors">Creative Edit #1</h3>
+                        <p class="text-sm text-brown">Instagram Reel</p>
+                    </div>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="https://www.instagram.com/reel/DU2orGmEnA7/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" class="group relative block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in-up" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 bg-darkBrown/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+                        <span class="text-white font-bold text-lg border-2 border-white px-6 py-2 rounded-full">View Reel</span>
+                    </div>
+                    <div class="h-64 bg-gray-200 flex items-center justify-center overflow-hidden">
+                        <i class="fab fa-instagram text-6xl text-orange/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-darkBrown mb-2 group-hover:text-orange transition-colors">Creative Edit #2</h3>
+                        <p class="text-sm text-brown">Instagram Reel</p>
+                    </div>
+                </a>
+
+                <!-- Project 3 -->
+                <a href="https://www.instagram.com/reel/DVS67cgDwT4/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==" target="_blank" class="group relative block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in-up" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 bg-darkBrown/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+                        <span class="text-white font-bold text-lg border-2 border-white px-6 py-2 rounded-full">View Reel</span>
+                    </div>
+                    <div class="h-64 bg-gray-200 flex items-center justify-center overflow-hidden">
+                        <i class="fab fa-instagram text-6xl text-orange/50 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-darkBrown mb-2 group-hover:text-orange transition-colors">Creative Edit #3</h3>
+                        <p class="text-sm text-brown">Instagram Reel</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-darkBrown text-cream">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-serif font-bold mb-8 fade-in-up">Let's Work <span class="text-orange">Together</span></h2>
+            <p class="text-lg text-cream/80 mb-12 fade-in-up">Feel free to reach out for collaborations or just a friendly hello.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 fade-in-up">
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/l1fe.isg0od/" target="_blank" class="flex items-center justify-center p-6 bg-white/5 rounded-xl hover:bg-orange transition-colors duration-300 group">
+                    <i class="fab fa-instagram text-3xl mr-4 text-orange group-hover:text-white"></i>
+                    <div class="text-left">
+                        <div class="text-xs uppercase tracking-wide opacity-70">Instagram</div>
+                        <div class="font-bold">@l1fe.isg0od</div>
+                    </div>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/charlie.img" target="_blank" class="flex items-center justify-center p-6 bg-white/5 rounded-xl hover:bg-orange transition-colors duration-300 group">
+                    <i class="fab fa-facebook text-3xl mr-4 text-orange group-hover:text-white"></i>
+                    <div class="text-left">
+                        <div class="text-xs uppercase tracking-wide opacity-70">Facebook</div>
+                        <div class="font-bold">charlie.img</div>
+                    </div>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@kero.txt" target="_blank" class="flex items-center justify-center p-6 bg-white/5 rounded-xl hover:bg-orange transition-colors duration-300 group">
+                    <i class="fab fa-tiktok text-3xl mr-4 text-orange group-hover:text-white"></i>
+                    <div class="text-left">
+                        <div class="text-xs uppercase tracking-wide opacity-70">TikTok</div>
+                        <div class="font-bold">@kero.txt</div>
+                    </div>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:charleswebper@gmail.com" class="flex items-center justify-center p-6 bg-white/5 rounded-xl hover:bg-orange transition-colors duration-300 group">
+                    <i class="fas fa-envelope text-3xl mr-4 text-orange group-hover:text-white"></i>
+                    <div class="text-left">
+                        <div class="text-xs uppercase tracking-wide opacity-70">Email</div>
+                        <div class="font-bold text-sm sm:text-base">charleswebper@gmail.com</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-white/10 fade-in-up">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-phone-alt text-orange mb-2"></i>
+                    <span class="text-xl font-bold tracking-wider">0922573013</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#6d4c29] text-cream/60 py-8 text-center text-sm">
+        <p>&copy; 2026 Charles. All rights reserved. Designed with passion.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for Scroll Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Animate skill bars if this is the skills section
+                        const skillBars = entry.target.querySelectorAll('.skill-bar-fill');
+                        skillBars.forEach(bar => {
+                            bar.style.width = bar.getAttribute('data-width');
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            const elements = document.querySelectorAll('.fade-in-up');
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
